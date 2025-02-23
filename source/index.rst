@@ -45,6 +45,8 @@ G代码比较正式的名字是 RS-274或者RS-274D。最早的数控机床是�
 * |linuxcnc|
 * |cnc program examples|
 
+  `摩天轮 <https://www.modb.pro/dbRank>`_
+
 *******************
  Table of Contents
 *******************
@@ -55,3 +57,4 @@ G代码比较正式的名字是 RS-274或者RS-274D。最早的数控机床是�
 
   camunda.rst
   optplaner.rst
+  minio.rst

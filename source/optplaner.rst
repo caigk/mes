@@ -38,6 +38,9 @@ G代码比较正式的名字是 RS-274或者RS-274D。最早的数控机床是�
 .. |playground| image:: https://img.shields.io/badge/playground-fanuc_macro_b-green
   :target: https://playground.cnc4me.org/
 
+*****************************
+参考资料
+*****************************
 
 * |cnc maro| |linuxcnc g code|
 * |playground|
