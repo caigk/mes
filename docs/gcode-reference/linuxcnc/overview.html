@@ -1,0 +1,1319 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G Code Overview &mdash; cnc reference 0.1.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/PythonicGcodeMachine.css?v=f6519d23" />
+
+  
+    <link rel="canonical" href="https://cnc.caigk.com/gcode-reference/linuxcnc/overview.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=74157ad4"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/getthecode.js"></script>
+      <script src="../../_static/matomo.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            cnc reference
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../rs-274/index.html">1. RS-274 G-code Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#history">1.1. History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#overview">1.2. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#language-view-of-a-machining-center">1.3. Language View of a Machining Center</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#parameters">1.3.1. Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#coordinate-systems">1.3.2. Coordinate Systems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#format-of-a-line">1.4. Format of a Line</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#line-number">1.4.1. Line Number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#word">1.4.2. Word</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#number">1.4.3. Number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#parameter-value">1.4.4. Parameter Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#expressions-and-binary-operations">1.4.5. Expressions and Binary Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#unary-operation-value">1.4.6. Unary Operation Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#parameter-setting">1.4.7. Parameter Setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#comments-and-messages">1.4.8. Comments and Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#item-repeats">1.4.9. Item Repeats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#item-order">1.4.10. Item order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#commands-and-machine-modes">1.4.11. Commands and Machine Modes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#modal-groups">1.5. Modal Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#g-and-input-codes">1.6. G and Input Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#order-of-execution">1.7. Order of Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../test.html">2. 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../test.html#id2">2.1. 2</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cnc reference</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">G Code Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/gcode-reference/linuxcnc/overview.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="g-code-overview">
+<h1>G Code Overview<a class="headerlink" href="#g-code-overview" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The LinuxCNC G Code language is based on the RS274/NGC language. The G Code language is based on
+lines of code. Each line (also called a 'block') may include commands to do several different
+things. Lines of code may be collected in a file to make a program.</p>
+<p>A typical line of code consists of an optional line number at the beginning followed by one or more
+'words'. A word consists of a letter followed by a number (or something that evaluates to a
+number). A word may either give a command or provide an argument to a command. For example, 'G1 X3'
+is a valid line of code with two words. 'G1' is a command meaning 'move in a straight line at the
+programmed feed rate to the programmed end point', and 'X3' provides an argument value (the value of
+X should be 3 at the end of the move). Most LinuxCNC G Code commands start with either G or M (for
+General and Miscellaneous). The words for these commands are called 'G codes' and 'M codes.'</p>
+<p>The LinuxCNC language has no indicator for the start of a program. The Interpreter, however, deals
+with files. A single program may be in a single file, or a program may be spread across several
+files. A file may demarcated with percents in the following way. The first non-blank line of a file
+may contain nothing but a percent sign, '%', possibly surrounded by white space, and later in the
+file (normally at the end of the file) there may be a similar line. Demarcating a file with percents
+is optional if the file has an 'M2' or 'M30' in it, but is required if not. An error will be
+signaled if a file has a percent line at the beginning but not at the end. The useful contents of a
+file demarcated by percents stop after the second percent line. Anything after that is ignored.</p>
+<p>The LinuxCNC G Code language has two commands ('M2' or 'M30'), either of which ends a program. A
+program may end before the end of a file. Lines of a file that occur after the end of a program are
+not to be executed.  The interpreter does not even read them.</p>
+</section>
+<section id="format-of-a-line">
+<h2>Format of a line<a class="headerlink" href="#format-of-a-line" title="Link to this heading"></a></h2>
+<p>A permissible line of input code consists of the following, in order, with the restriction that
+there is a maximum (currently 256) to the number of characters allowed on a line.</p>
+<ol class="arabic simple">
+<li><p>an optional block delete character, which is a slash '/'.</p></li>
+<li><p>an optional line number.</p></li>
+<li><p>any number of words, parameter settings, and comments.</p></li>
+<li><p>an end of line marker (carriage return or line feed or both).</p></li>
+</ol>
+<p>Any input not explicitly allowed is illegal and will cause the Interpreter to signal an error.</p>
+<p>Spaces and tabs are allowed anywhere on a line of code and do not change the meaning of the line,
+except inside comments. This makes some strange-looking input legal. The line 'G0X +0. 12 34Y 7' is
+equivalent to 'G0 x+0.1234 Y7', for example.</p>
+<p>Blank lines are allowed in the input. They are to be ignored.</p>
+<p>Input is case insensitive, except in comments, i.e., any letter outside a comment may be in upper or
+lower case without changing the meaning of a line.</p>
+<section id="block-delete">
+<h3>Block Delete<a class="headerlink" href="#block-delete" title="Link to this heading"></a></h3>
+<p>The optional block delete character the slash '/' when placed first on a line can be used by some
+user interfaces to skip lines of code when needed. In Axis the key combination Alt-m-/ toggles block
+delete on and off. When block delete is on any lines starting with the slash '/' are skipped.</p>
+</section>
+<section id="line-number">
+<h3>Line Number<a class="headerlink" href="#line-number" title="Link to this heading"></a></h3>
+<p>A line number is the letter N followed by an unsigned integer, optionally followed by a period and
+another unsigned integer. For example, 'N1234' and 'N56.78' are valid line numbers. They may be
+repeated or used out of order, although normal practice is to avoid such usage. Line numbers may
+also be skipped, and that is normal practice. A line number is not required to be used, but must be
+in the proper place if used.</p>
+</section>
+<section id="word">
+<h3>Word<a class="headerlink" href="#word" title="Link to this heading"></a></h3>
+<p>A word is a letter other than N followed by a real value.</p>
+<p>Words may begin with any of the letters shown in the following Table.  The table includes N for
+completeness, even though, as defined above, line numbers are not words. Several letters (I, J, K,
+L, P, R) may have different meanings in different contexts. Letters which refer to axis names are
+not valid on a machine which does not have the corresponding axis.</p>
+<p>Table 1. Words and their meanings</p>
+<p>Letter
+Meaning
+A
+A axis of machine
+B
+B axis of machine
+C
+C axis of machine
+D
+Tool radius compensation number
+F
+Feed rate
+G
+General function (See table <a class="reference external" href="#cap:modal-groups">Modal Groups</a>)
+H
+Tool length offset index
+I
+X offset for arcs and G87 canned cycles
+J
+Y offset for arcs and G87 canned cycles
+K
+Z offset for arcs and G87 canned cycles.
+Spindle-Motion Ratio for G33 synchronized movements.
+L
+generic parameter word for G10, M66 and others
+M
+Miscellaneous function (See table <a class="reference external" href="#cap:modal-groups">Modal Groups</a>)
+N
+Line number
+P
+Dwell time in canned cycles and with G4.
+Key used with G10.
+Q
+Feed increment in G73, G83 canned cycles
+R
+Arc radius or canned cycle plane
+S
+Spindle speed
+T
+Tool selection
+U
+U axis of machine
+V
+V axis of machine
+W
+W axis of machine
+X
+X axis of machine
+Y
+Y axis of machine
+Z
+Z axis of machine</p>
+</section>
+<section id="number">
+<h3>Number<a class="headerlink" href="#number" title="Link to this heading"></a></h3>
+<p>The following rules are used for (explicit) numbers. In these rules a digit is a single character
+between 0 and 9.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>A number consists of (1) an optional plus or minus sign, followed by (2) zero to many digits,</dt><dd><p>followed, possibly, by (3) one decimal point, followed by (4) zero to many digits - provided that
+there is at least one digit somewhere in the number.</p>
+</dd>
+</dl>
+</li>
+<li><p>There are two kinds of numbers: integers and decimals. An integer does not have a decimal point in
+it; a decimal does.</p></li>
+<li><p>Numbers may have any number of digits, subject to the limitation on line length. Only about
+seventeen significant figures will be retained, however (enough for all known applications).</p></li>
+<li><p>A non-zero number with no sign as the first character is assumed to be positive.</p></li>
+</ul>
+<p>Notice that initial (before the decimal point and the first non-zero digit) and trailing (after the
+decimal point and the last non-zero digit) zeros are allowed but not required. A number written with
+initial or trailing zeros will have the same value when it is read as if the extra zeros were not
+there.</p>
+<p>Numbers used for specific purposes in RS274/NGC are often restricted to some finite set of values or
+some to some range of values. In many uses, decimal numbers must be close to integers; this includes
+the values of indices (for parameters and carousel slot numbers, for example), M codes, and G codes
+multiplied by ten. A decimal number which is intended to represent an integer is considered close
+enough if it is within 0.0001 of an integer value.</p>
+</section>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<p>The RS274/NGC language supports 'parameters' - what in other programming languages would be called
+'variables'. There are several types of parameter of different purpose and appearance, each
+described in the following sections. The only value type supported by parameters is floating-point;
+there are no string, boolean or integer types in G-code like in other programming
+languages. However, logic expressions can be formulated with <a class="reference external" href="#gcode:binary-operators">boolean operators</a> ( 'AND', 'OR', 'XOR', and the comparison operators
+'EQ','NE','GT','GE','LT','LE'), and the 'MOD', 'ROUND', 'FUP' and 'FIX' <a class="reference external" href="#gcode:functions">operators</a> support integer arithmetic.</p>
+<p>Parameters differ in syntax, scope, behavior when not yet initialized, mode, persistence and
+intended use.</p>
+<div class="line-block">
+<div class="line">Syntax</div>
+<div class="line">There are three kinds of syntactic appearance:</div>
+</div>
+<ul class="simple">
+<li><p>'numbered' - #4711</p></li>
+<li><p>'named local' - #&lt;localvalue&gt;</p></li>
+<li><p>'named global' - #&lt;_globalvalue&gt;</p></li>
+</ul>
+<div class="line-block">
+<div class="line">Scope</div>
+<div class="line">The scope of a parameter is either global, or local within a
+subroutine. Subroutine parameters and local named variables have local
+scope. Global named parameters and numbered parameters starting from
+number 31 are global in scope. RS274/NGC uses 'lexical scoping' - in a
+subroutine only the local variables defined therein, and any global
+variables are visible. The local variables of a calling procedure are
+not visible in a called procedure.</div>
+</div>
+<p>Behavior of uninitialized parameters</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Uninitialized global parameters, and unused subroutine parameters</dt><dd><p>return the value zero when used in an expression.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Uninitialized named parameters signal an error when used in an</dt><dd><p>expression.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">Mode</div>
+<div class="line">Most parameters are read/write and may be assigned to within an
+assignment statement. However, for many predefined parameters this
+does not make sense, so they are are read-only - they may appear in
+expressions, but not on the left-hand side of an assignment statement.</div>
+</div>
+<div class="line-block">
+<div class="line">Persistence</div>
+<div class="line">When LinuxCNC is shut down, volatile parameters lose their values. All
+parameters except numbered parameters in the current persistent range
+^([<a class="reference external" href="#_footnote_1">1</a>]) are volatile. Persistent parameters are
+saved in the .var file and restored to their previous values when
+LinuxCNC is started again. Volatile numbered parameters are reset to
+zero.</div>
+</div>
+<div class="line-block">
+<div class="line">Intended Use</div>
+<div class="line">* user parameters</div>
+<div class="line">numbered parameters in the range 31..5000, and named global and local
+parameters except predefined parameters. These are available for
+general-purpose storage of floating-point values, like intermediate
+results, flags etc, throughout program execution. They are read/write
+(can be assigned a value).</div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference external" href="#sub:subroutine-parameters">subroutine parameters</a> - these are used to hold the actual</dt><dd><p>parameters passed to a subroutine.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference external" href="#sub:numbered-parameters">numbered parameters</a> - most of these are used to access offsets of</dt><dd><p>coordinate systems.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference external" href="#sub:system-parameters">system parameters</a> - used to determine the current running</dt><dd><p>version. They are read-only.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="numbered-parameters">
+<h3>Numbered Parameters<a class="headerlink" href="#numbered-parameters" title="Link to this heading"></a></h3>
+<p>A numbered parameter is the pound character '#' followed by an integer between 1 and (currently)
+5602 ^([<a class="reference external" href="#_footnote_2">2</a>]). The parameter is referred to by this integer, and its value is
+whatever number is stored in the parameter.</p>
+<p>A value is stored in a parameter with the = operator; for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#3 = 15 (set parameter 3 to 15)</span>
+</pre></div>
+</div>
+<p>A parameter setting does not take effect until after all parameter values on the same line have been
+found. For example, if parameter 3 has been previously set to 15 and the line '#3=6 G1 X#3' is
+interpreted, a straight move to a point where X equals 15 will occur and the value of parameter 3
+will be 6.</p>
+<p>The '#' character takes precedence over other operations, so that, for example, '#1+2' means the
+number found by adding 2 to the value of parameter 1, not the value found in parameter 3. Of course,
+'#[1+2]' does mean the value found in parameter 3. The '#' character may be repeated; for example
+'##2' means the value of the parameter whose index is the (integer) value of parameter 2.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>'31-5000' - G code user parameters. These parameters are global in the G code file, and available</dt><dd><p>for general use. Volatile.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>'5061-5069' - Coordinates of a <a class="reference external" href="#gcode:g38">G38</a> probe result (X, Y, Z, A, B, C, U, V &amp;</dt><dd><p>W). Coordinates are in the coordinate system in which the G38 took place. Volatile.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>'5070' - <a class="reference external" href="#gcode:g38">G38</a> probe result: 1 if success, 0 if probe failed to close. Used with</dt><dd><p>G38.3 and G38.5. Volatile.</p>
+</dd>
+</dl>
+</li>
+<li><p>'5161-5169' - &quot;G28&quot; Home for X, Y, Z, A, B, C, U, V &amp; W. Persistent.</p></li>
+<li><p>'5181-5189' - &quot;G30&quot; Home for X, Y, Z, A, B, C, U, V &amp; W. Persistent.</p></li>
+<li><dl class="simple">
+<dt>'5210' - 1 if &quot;G52&quot; or &quot;G92&quot; offset is currently applied, 0 otherwise. Volatile by default;</dt><dd><p>persistent if 'DISABLE_G92_PERSISTENCE = 1' in the '[RS274NGC]' section of the '.ini' file.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>'5211-5219' - Shared &quot;G52&quot; and &quot;G92&quot; offset for X, Y, Z, A, B, C, U, V &amp; W. Volatile by default;</dt><dd><p>persistent if 'DISABLE_G92_PERSISTENCE = 1' in the '[RS274NGC]' section of the '.ini' file.</p>
+</dd>
+</dl>
+</li>
+<li><p>'5220' - Coordinate System number 1 - 9 for G54 - G59.3. Persistent.</p></li>
+<li><dl class="simple">
+<dt>'5221-5230' - Coordinate System 1, G54 for X, Y, Z, A, B, C, U, V, W &amp; R. R denotes the XY</dt><dd><p>rotation angle around the Z axis. Persistent.</p>
+</dd>
+</dl>
+</li>
+<li><p>'5241-5250' - Coordinate System 2, G55 for X, Y, Z, A, B, C, U, V, W &amp; R. Persistent.</p></li>
+<li><p>'5261-5270' - Coordinate System 3, G56 for X, Y, Z, A, B, C, U, V, W &amp; R. Persistent.</p></li>
+<li><p>'5281-5290' - Coordinate System 4, G57 for X, Y, Z, A, B, C, U, V, W &amp; R. Persistent.</p></li>
+<li><p>'5301-5310' - Coordinate System 5, G58 for X, Y, Z, A, B, C, U, V, W &amp; R. Persistent.</p></li>
+<li><p>'5321-5330' - Coordinate System 6, G59 for X, Y, Z, A, B, C, U, V, W &amp; R. Persistent.</p></li>
+<li><p>'5341-5350' - Coordinate System 7, G59.1 for X, Y, Z, A, B, C, U, V, W &amp; R. Persistent.</p></li>
+<li><p>'5361-5370' - Coordinate System 8, G59.2 for X, Y, Z, A, B, C, U, V, W &amp; R. Persistent.</p></li>
+<li><p>'5381-5390' - Coordinate System 9, G59.3 for X, Y, Z, A, B, C, U, V, W &amp; R. Persistent.</p></li>
+<li><p>'5399' - Result of M66 - Check or wait for input. Volatile.</p></li>
+<li><p>'5400' - Tool Number. Volatile.</p></li>
+<li><p>'5401-5409' - Tool Offsets for X, Y, Z, A, B, C, U, V &amp; W. Volatile.</p></li>
+<li><p>'5410' - Tool Diameter. Volatile.</p></li>
+<li><p>'5411' - Tool Front Angle. Volatile.</p></li>
+<li><p>'5412' - Tool Back Angle. Volatile.</p></li>
+<li><p>'5413' - Tool Orientation. Volatile.</p></li>
+<li><dl class="simple">
+<dt>'5420-5428' - Current relative position in the active coordinate system including all offsets and</dt><dd><p>in the current program units for X, Y, Z, A, B, C, U, V &amp; W, volatile.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>'5599' - Flag for controlling the output of (DEBUG,) statements.  1=output, 0=no output;</dt><dd><p>default=1. Volatile.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>'5600' - Toolchanger fault indicator. Used with the iocontrol-v2 component. 1: toolchanger</dt><dd><p>faulted, 0: normal. Volatile.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>'5601' - Toolchanger fault code. Used with the iocontrol-v2 component. Reflects the value of the</dt><dd><p>'toolchanger-reason' HAL pin if a fault occurred. Volatile.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Numbered Parameters Persistence</p>
+<p>The values of parameters in the persistent range are retained over time, even if the machining
+center is powered down. LinuxCNC uses a parameter file to ensure persistence. It is managed by the
+Interpreter. The Interpreter reads the file when it starts up, and writes the file when it exits.</p>
+<p>The format of a parameter file is shown in Table <a class="reference external" href="#gcode:format-parameter-file">Parameter File Format</a>.</p>
+<p>The Interpreter expects the file to have two columns. It skips any lines which do not contain
+exactly two numeric values. The first column is expected to contain an integer value (the
+parameter’s number). The second column contains a floating point number (this parameter’s last
+value). The value is represented as a double-precision floating point number inside the Interpreter,
+but a decimal point is not required in the file.</p>
+<p>Parameters in the user-defined range (31-5000) may be added to this file. Such parameters will be
+read by the Interpreter and written to the file as it exits.</p>
+<p>Missing Parameters in the persistent range will be initialized to zero and written with their
+current values on the next save operation.</p>
+<p>The parameter numbers must be arranged in ascending order. An 'Parameter file out of order' error
+will be signaled if they are not in ascending order.</p>
+<p>The original file is saved as a backup file when the new file is written.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter Number</p></th>
+<th class="head"><p>Parameter Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>5161</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>5162</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="subroutine-parameters">
+<h3>Subroutine Parameters<a class="headerlink" href="#subroutine-parameters" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>'1-30' Subroutine local parameters of call arguments. These parameters are local to the
+subroutine. Volatile. See also the chapter on <a class="reference external" href="#cha:o-codes">O-Codes</a>.</p></li>
+</ul>
+</section>
+<section id="named-parameters">
+<h3>Named Parameters<a class="headerlink" href="#named-parameters" title="Link to this heading"></a></h3>
+<p>Named parameters work like numbered parameters but are easier to read.  All parameter names are
+converted to lower case and have spaces and tabs removed, so '&lt;param&gt;' and '&lt;P a R am &gt;' refer to
+the same parameter.  Named parameters must be enclosed with '&lt; &gt;' marks.</p>
+<p>'#&lt;named parameter&gt;' is a local named parameter. By default, a named parameter is local to the scope
+in which it is assigned. You can’t access a local parameter outside of its subroutine. This means
+that two subroutines can use the same parameter names without fear of one subroutine overwriting the
+values in another.</p>
+<p>'#&lt;_global named parameter&gt;' is a global named parameter. They are accessible from within called
+subroutines and may set values within subroutines that are accessible to the caller. As far as scope
+is concerned, they act just like regular numeric parameters. They are not stored in files.</p>
+<p>Examples:</p>
+<p>Declaration of named global variable</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#&lt;_endmill_dia&gt; = 0.049</span>
+</pre></div>
+</div>
+<p>Reference to previously declared global variable</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#&lt;_endmill_rad&gt; = [#&lt;_endmill_dia&gt;/2.0]</span>
+</pre></div>
+</div>
+<p>Mixed literal and named parameters</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">o100</span> <span class="n">call</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="p">[</span><span class="c1">#&lt;_inside_cutout&gt;-#&lt;_endmill_dia&gt;] [#&lt;_Zcut&gt;] [#&lt;_feedrate&gt;]</span>
+</pre></div>
+</div>
+<p>Named parameters spring into existence when they are assigned a value for the first time. Local
+named parameters vanish when their scope is left: when a subroutine returns, all its local
+parameters are deleted and cannot be referred to anymore.</p>
+<p>It is an error to use a non-existent named parameter within an expression, or at the right-hand side
+of an assignment. Printing the value of a non-existent named parameter with a DEBUG statement - like
+'(DEBUG, &lt;no_such_parameter&gt;)' will display the string '#'.</p>
+<p>Global parameters, as well as local parameters assigned to at the global level, retain their value
+once assigned even when the program ends, and have these values when the program is run again.</p>
+<p>The <a class="reference external" href="#gcode:functions">'EXISTS' function</a> tests whether a given named parameter exists.</p>
+</section>
+<section id="predefined-named-parameters">
+<h3>Predefined Named Parameters<a class="headerlink" href="#predefined-named-parameters" title="Link to this heading"></a></h3>
+<p>The following global read only named parameters are available to access internal state of the
+interpreter and machine state. They can be used in arbitrary expressions, for instance to control
+flow of the program with if-then-else statements. Note that new <a class="reference external" href="#remap:adding-predefined-named-parameters">predefined named parameters</a> can be added easily without changes to the source
+code.</p>
+<ul class="simple">
+<li><p>'#&lt;_vmajor&gt;' - Major package version. If current version was 2.5.2 would return 2.5.  d</p></li>
+<li><p>'#&lt;_vminor&gt;' - Minor package version. If current version was 2.6.2 it would return 0.2.  d</p></li>
+<li><p>'#&lt;_line&gt;' - Sequence number. If running a G-Code file, this returns the current line number.</p></li>
+<li><p>'#&lt;_motion_mode&gt;' - Return the interpreter’s current motion mode:</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Motion mode</p></th>
+<th class="head"><p>return value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>G1</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>G2</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>G3</p></td>
+<td><p>30</p></td>
+</tr>
+<tr class="row-odd"><td><p>G33</p></td>
+<td><p>330</p></td>
+</tr>
+<tr class="row-even"><td><p>G38.2</p></td>
+<td><p>382</p></td>
+</tr>
+<tr class="row-odd"><td><p>G38.3</p></td>
+<td><p>383</p></td>
+</tr>
+<tr class="row-even"><td><p>G38.4</p></td>
+<td><p>384</p></td>
+</tr>
+<tr class="row-odd"><td><p>G38.5</p></td>
+<td><p>385</p></td>
+</tr>
+<tr class="row-even"><td><p>G5.2</p></td>
+<td><p>52</p></td>
+</tr>
+<tr class="row-odd"><td><p>G73</p></td>
+<td><p>730</p></td>
+</tr>
+<tr class="row-even"><td><p>G76</p></td>
+<td><p>760</p></td>
+</tr>
+<tr class="row-odd"><td><p>G80</p></td>
+<td><p>800</p></td>
+</tr>
+<tr class="row-even"><td><p>G81</p></td>
+<td><p>810</p></td>
+</tr>
+<tr class="row-odd"><td><p>G82</p></td>
+<td><p>820</p></td>
+</tr>
+<tr class="row-even"><td><p>G83</p></td>
+<td><p>830</p></td>
+</tr>
+<tr class="row-odd"><td><p>G84</p></td>
+<td><p>840</p></td>
+</tr>
+<tr class="row-even"><td><p>G85</p></td>
+<td><p>850</p></td>
+</tr>
+<tr class="row-odd"><td><p>G86</p></td>
+<td><p>860</p></td>
+</tr>
+<tr class="row-even"><td><p>G87</p></td>
+<td><p>870</p></td>
+</tr>
+<tr class="row-odd"><td><p>G88</p></td>
+<td><p>880</p></td>
+</tr>
+<tr class="row-even"><td><p>G89</p></td>
+<td><p>890</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>'#&lt;_plane&gt;' - returns the value designating the current plane:</p></li>
+</ul>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Plane</p></td>
+<td><p>return value</p></td>
+</tr>
+<tr class="row-even"><td><p>G17</p></td>
+<td><p>170</p></td>
+</tr>
+<tr class="row-odd"><td><p>G18</p></td>
+<td><p>180</p></td>
+</tr>
+<tr class="row-even"><td><p>G19</p></td>
+<td><p>190</p></td>
+</tr>
+<tr class="row-odd"><td><p>G17.1</p></td>
+<td><p>171</p></td>
+</tr>
+<tr class="row-even"><td><p>G18.1</p></td>
+<td><p>181</p></td>
+</tr>
+<tr class="row-odd"><td><p>G19.1</p></td>
+<td><p>191</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>'#&lt;_ccomp&gt;' - Status of cutter compensation. Return values:</p></li>
+</ul>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Mode</p></td>
+<td><p>return value</p></td>
+</tr>
+<tr class="row-even"><td><p>G40</p></td>
+<td><p>400</p></td>
+</tr>
+<tr class="row-odd"><td><p>G41</p></td>
+<td><p>410</p></td>
+</tr>
+<tr class="row-even"><td><p>G41.1</p></td>
+<td><p>411</p></td>
+</tr>
+<tr class="row-odd"><td><p>G41</p></td>
+<td><p>410</p></td>
+</tr>
+<tr class="row-even"><td><p>G42</p></td>
+<td><p>420</p></td>
+</tr>
+<tr class="row-odd"><td><p>G42.1</p></td>
+<td><p>421</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>'#&lt;_metric&gt;' - Return 1 if G21 is on, else 0.</p></li>
+<li><p>'#&lt;_imperial&gt;' - Return 1 if G20 is on, else 0.</p></li>
+<li><p>'#&lt;_absolute&gt;' - Return 1 if G90 is on, else 0.</p></li>
+<li><p>'#&lt;_incremental&gt;' - Return 1 if G91 is on, else 0.</p></li>
+<li><p>'#&lt;_inverse_time&gt;' - Return 1 if inverse feed mode (G93) is on, else 0.</p></li>
+<li><p>'#&lt;_units_per_minute&gt;' - Return 1 if Units/minute feed mode (G94) is on, else 0.</p></li>
+<li><p>'#&lt;_units_per_rev&gt;' - Return 1 if Units/revolution mode (G95) is on, else 0.</p></li>
+<li><dl class="simple">
+<dt>'#&lt;_coord_system&gt;' - Return a float of the current coordinate system name(G54..G59.3). For example</dt><dd><p>if your in G55 coordinate system the return value is 550.000000 and if your in G59.1 the return
+value is 591.000000.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mode</p></th>
+<th class="head"><p>return value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>G54</p></td>
+<td><p>554</p></td>
+</tr>
+<tr class="row-odd"><td><p>G55</p></td>
+<td><p>550</p></td>
+</tr>
+<tr class="row-even"><td><p>G56</p></td>
+<td><p>560</p></td>
+</tr>
+<tr class="row-odd"><td><p>G57</p></td>
+<td><p>570</p></td>
+</tr>
+<tr class="row-even"><td><p>G58</p></td>
+<td><p>580</p></td>
+</tr>
+<tr class="row-odd"><td><p>G59</p></td>
+<td><p>590</p></td>
+</tr>
+<tr class="row-even"><td><p>G59.1</p></td>
+<td><p>591</p></td>
+</tr>
+<tr class="row-odd"><td><p>G59.2</p></td>
+<td><p>592</p></td>
+</tr>
+<tr class="row-even"><td><p>G59.3</p></td>
+<td><p>593</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>'#&lt;_tool_offset&gt;' - Return 1 if tool offset (G43) is on, else 0.</p></li>
+<li><p>'#&lt;_retract_r_plane&gt;' - Return 1 if G98 is set, else 0.</p></li>
+<li><p>'#&lt;_retract_old_z&gt;' - Return 1 if G99 is on, else 0.</p></li>
+</ul>
+</section>
+<section id="system-parameters">
+<h3>System Parameters<a class="headerlink" href="#system-parameters" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>'#&lt;_spindle_rpm_mode&gt;' - Return 1 if spindle rpm mode (G97) is on, else 0.</p></li>
+<li><p>'#&lt;_spindle_css_mode&gt;' - Return 1 if constant surface speed mode (G96) is on, else 0.</p></li>
+<li><p>'#&lt;_ijk_absolute_mode&gt;' - Return 1 if Absolute Arc distance mode (G90.1) is on, else 0.</p></li>
+<li><dl class="simple">
+<dt>'#&lt;_lathe_diameter_mode&gt;' - Return 1 if this is a lathe configuration and diameter (G7) mode is</dt><dd><p>on, else 0.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>'#&lt;_lathe_radius_mode&gt;' - Return 1 if this is a lathe configuration and radius (G8) mode is on,</dt><dd><p>else 0.</p>
+</dd>
+</dl>
+</li>
+<li><p>'#&lt;_spindle_on&gt;' - Return 1 if spindle currently running (M3 or M4) else 0.</p></li>
+<li><p>'#&lt;_spindle_cw&gt;' - Return 1 if spindle direction is clockwise (M3) else 0.</p></li>
+<li><p>'#&lt;_mist&gt;' - Return 1 if mist (M7) is on.</p></li>
+<li><p>'#&lt;_flood&gt;' - Return 1 if flood (M8) is on.</p></li>
+<li><p>'#&lt;_speed_override&gt;' - Return 1 if feed override (M48 or M50 P1) is on, else 0.</p></li>
+<li><p>'#&lt;_feed_override&gt;' - Return 1 if feed override (M48 or M51 P1) is on, else 0.</p></li>
+<li><p>'#&lt;_adaptive_feed&gt;' - Return 1 if adaptive feed (M52 or M52 P1) is on, else 0.</p></li>
+<li><p>'#&lt;_feed_hold&gt;' - Return 1 if feed hold switch is enabled (M53 P1), else 0.</p></li>
+<li><p>'#&lt;_feed&gt;' - Return the current value of F, not the actual feed rate.</p></li>
+<li><p>'#&lt;_rpm&gt;' - Return the current value of S, not the actual spindle speed.</p></li>
+<li><p>'#&lt;_x&gt;' - Return current relative X coordinate including all offsets.  Same as #5420.</p></li>
+<li><p>'#&lt;_y&gt;' - Return current relative Y coordinate including all offsets.  Same as #5421.</p></li>
+<li><p>'#&lt;_z&gt;' - Return current relative Z coordinate including all offsets.  Same as #5422.</p></li>
+<li><p>'#&lt;_a&gt;' - Return current relative A coordinate including all offsets.  Same as #5423.</p></li>
+<li><p>'#&lt;_b&gt;' - Return current relative B coordinate including all offsets.  Same as #5424.</p></li>
+<li><p>'#&lt;_c&gt;' - Return current relative C coordinate including all offsets.  Same as #5425.</p></li>
+<li><p>'#&lt;_u&gt;' - Return current relative U coordinate including all offsets.  Same as #5426.</p></li>
+<li><p>'#&lt;_v&gt;' - Return current relative V coordinate including all offsets.  Same as #5427.</p></li>
+<li><p>'#&lt;_w&gt;' - Return current relative W coordinate including all offsets.  Same as #5428.</p></li>
+<li><p>'#&lt;_current_tool&gt;' - Return number of the current tool in spindle.  Same as #5400.</p></li>
+<li><p>'#&lt;_current_pocket&gt;' - Return pocket number of the current tool.</p></li>
+<li><p>'#&lt;_selected_tool&gt;' - Return number of the selected tool post a T code. Default -1.</p></li>
+<li><dl class="simple">
+<dt>'#&lt;_selected_pocket&gt;' - Return number of the selected pocket post a T code. Default -1 (no pocket</dt><dd><p>selected).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>'#&lt;_value&gt;' - Return value from the last O-word 'return' or 'endsub'.  Default value 0 if no</dt><dd><p>expression after 'return' or 'endsub'.  Initialized to 0 on program start.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>'#&lt;_value_returned&gt;' - 1.0 if the last O-word 'return' or 'endsub' returned a value, 0</dt><dd><p>otherwise. Cleared by the next O-word call.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>'#&lt;_task&gt;' - 1.0 if the executing interpreter instance is part of milltask, 0.0</dt><dd><p>otherwise. Sometimes it is necessary to treat this case specially to retain proper preview, for
+instance when testing the success of a probe (G38.n) by inspecting #5070, which will always fail
+in the preview interpreter (e.g. Axis).</p>
+</dd>
+</dl>
+</li>
+<li><p>'#&lt;_call_level&gt;' - current nesting level of O-word procedures. For debugging.</p></li>
+<li><dl class="simple">
+<dt>'#&lt;_remap_level&gt;' - current level of the remap stack. Each remap in a block adds one to the remap</dt><dd><p>level. For debugging.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="expressions">
+<h2>Expressions<a class="headerlink" href="#expressions" title="Link to this heading"></a></h2>
+<p>An expression is a set of characters starting with a left bracket '[' and ending with a balancing
+right bracket ']' . In between the brackets are numbers, parameter values, mathematical operations,
+and other expressions. An expression is evaluated to produce a number. The expressions on a line are
+evaluated when the line is read, before anything on the line is executed. An example of an
+expression is '[1 + acos[0] - [#3 ** [4.0/2]]]'.</p>
+</section>
+<section id="binary-operators">
+<h2>Binary Operators<a class="headerlink" href="#binary-operators" title="Link to this heading"></a></h2>
+<p>Binary operators only appear inside expressions. There are four basic mathematical operations:
+addition ('+'), subtraction ('-'), multiplication ('*'), and division ('/'). There are three logical
+operations: non-exclusive or ('OR'), exclusive or ('XOR'), and logical and ('AND'). The eighth
+operation is the modulus operation ('MOD'). The ninth operation is the 'power' operation ('**') of
+raising the number on the left of the operation to the power on the right. The relational operators
+are equality ('EQ'), inequality ('NE'), strictly greater than ('GT'), greater than or equal to
+('GE'), strictly less than ('LT'), and less than or equal to ('LE').</p>
+<p>The binary operations are divided into several groups according to their precedence. If operations
+in different precedence groups are strung together (for example in the expression '[2.0 / 3 * 1.5 -
+5.5 / 11.0]'), operations in a higher group are to be performed before operations in a lower
+group. If an expression contains more than one operation from the same group (such as the first '/'
+and '*' in the example), the operation on the left is performed first. Thus, the example is
+equivalent to: '[ [ [2.0 / 3] * 1.5] - [5.5 / 11.0] ]' , which is equivalent to to '[1.0 - 0.5]' ,
+which is '0.5'.</p>
+<p>The logical operations and modulus are to be performed on any real numbers, not just on
+integers. The number zero is equivalent to logical false, and any non-zero number is equivalent to
+logical true.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operators</p></th>
+<th class="head"><p>Precedence</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>**</p></td>
+<td><p>'highest'</p></td>
+</tr>
+<tr class="row-odd"><td><p>* / MOD</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>EQ NE GT GE LT LE</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>AND OR XOR</p></td>
+<td><p>'lowest'</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="equality-and-floating-point-values">
+<h2>Equality and floating-point values<a class="headerlink" href="#equality-and-floating-point-values" title="Link to this heading"></a></h2>
+<p>The RS274/NGC language only supports floating-point values of finite precision. Therefore, testing
+for equality or inequality of two floating-point values is inherently problematic. The interpreter
+solves this problem by considering values equal if their absolute difference is less than 0.0001
+(this value is defined as 'TOLERANCE_EQUAL' in src/emc/rs274ngc/interp_internal.hh).</p>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<p>The available functions are shown in following table. Arguments to unary operations which take angle
+measures ('COS', 'SIN', and 'TAN' ) are in degrees. Values returned by unary operations which return
+angle measures ('ACOS', 'ASIN', and 'ATAN') are also in degrees.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function Name</p></th>
+<th class="head"><p>Function result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATAN[arg]/[arg]</p></td>
+<td><p>Four quadrant inverse tangent</p></td>
+</tr>
+<tr class="row-odd"><td><p>ABS[arg]</p></td>
+<td><p>Absolute value</p></td>
+</tr>
+<tr class="row-even"><td><p>ACOS[arg]</p></td>
+<td><p>Inverse cosine</p></td>
+</tr>
+<tr class="row-odd"><td><p>ASIN[arg]</p></td>
+<td><p>Inverse sine</p></td>
+</tr>
+<tr class="row-even"><td><p>COS[arg]</p></td>
+<td><p>Cosine</p></td>
+</tr>
+<tr class="row-odd"><td><p>EXP[arg]</p></td>
+<td><p>e raised to the given power</p></td>
+</tr>
+<tr class="row-even"><td><p>FIX[arg]</p></td>
+<td><p>Round down to integer</p></td>
+</tr>
+<tr class="row-odd"><td><p>FUP[arg]</p></td>
+<td><p>Round up to integer</p></td>
+</tr>
+<tr class="row-even"><td><p>ROUND[arg]</p></td>
+<td><p>Round to nearest integer</p></td>
+</tr>
+<tr class="row-odd"><td><p>LN[arg]</p></td>
+<td><p>Base-e logarithm</p></td>
+</tr>
+<tr class="row-even"><td><p>SIN[arg]</p></td>
+<td><p>Sine</p></td>
+</tr>
+<tr class="row-odd"><td><p>SQRT[arg]</p></td>
+<td><p>Square Root</p></td>
+</tr>
+<tr class="row-even"><td><p>TAN[arg]</p></td>
+<td><p>Tangent</p></td>
+</tr>
+<tr class="row-odd"><td><p>EXISTS[arg]</p></td>
+<td><p>Check named Parameter</p></td>
+</tr>
+</tbody>
+</table>
+<p>The 'FIX' function rounds towards the left (less positive or more negative) on a number line, so
+that 'FIX[2.8] =2' and 'FIX[-2.8] = -3'.</p>
+<p>The 'FUP' operation rounds towards the right (more positive or less negative) on a number line;
+'FUP[2.8] = 3' and 'FUP[-2.8] = -2'.</p>
+<p>The 'EXISTS' function checks for the existence of a single named parameter. It takes only one named
+parameter and returns 1 if it exists and 0 if it does not exist. It is an error if you use a
+numbered parameter or an expression. Here is an example for the usage of the EXISTS function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">o</span><span class="o">&lt;</span><span class="n">test</span><span class="o">&gt;</span> <span class="n">sub</span>
+<span class="n">o10</span> <span class="k">if</span> <span class="p">[</span><span class="n">EXISTS</span><span class="p">[</span><span class="c1">#&lt;_global&gt;]]</span>
+    <span class="p">(</span><span class="n">debug</span><span class="p">,</span> <span class="n">_global</span> <span class="n">exists</span> <span class="ow">and</span> <span class="n">has</span> <span class="n">the</span> <span class="n">value</span> <span class="c1">#&lt;_global&gt;)</span>
+<span class="n">o10</span> <span class="k">else</span>
+    <span class="p">(</span><span class="n">debug</span><span class="p">,</span> <span class="n">_global</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">)</span>
+<span class="n">o10</span> <span class="n">endif</span>
+<span class="n">o</span><span class="o">&lt;</span><span class="n">test</span><span class="o">&gt;</span> <span class="n">endsub</span>
+
+<span class="n">o</span><span class="o">&lt;</span><span class="n">test</span><span class="o">&gt;</span> <span class="n">call</span>
+<span class="c1">#&lt;_global&gt; = 4711</span>
+<span class="n">o</span><span class="o">&lt;</span><span class="n">test</span><span class="o">&gt;</span> <span class="n">call</span>
+<span class="n">m2</span>
+</pre></div>
+</div>
+</section>
+<section id="repeated-items">
+<h2>Repeated Items<a class="headerlink" href="#repeated-items" title="Link to this heading"></a></h2>
+<p>A line may have any number of G words, but two G words from the same modal group may not appear on
+the same line See the <a class="reference external" href="#gcode:modal-groups">Modal Groups</a> Section for more information.</p>
+<p>A line may have zero to four M words. Two M words from the same modal group may not appear on the
+same line.</p>
+<p>For all other legal letters, a line may have only one word beginning with that letter.</p>
+<p>If a parameter setting of the same parameter is repeated on a line, '#3=15 #3=6', for example, only
+the last setting will take effect. It is silly, but not illegal, to set the same parameter twice on
+the same line.</p>
+<p>If more than one comment appears on a line, only the last one will be used; each of the other
+comments will be read and its format will be checked, but it will be ignored thereafter. It is
+expected that putting more than one comment on a line will be very rare.</p>
+</section>
+<section id="item-order">
+<h2>Item order<a class="headerlink" href="#item-order" title="Link to this heading"></a></h2>
+<p>The three types of item whose order may vary on a line (as given at the beginning of this section)
+are word, parameter setting, and comment.  Imagine that these three types of item are divided into
+three groups by type.</p>
+<p>The first group (the words) may be reordered in any way without changing the meaning of the line.</p>
+<p>If the second group (the parameter settings) is reordered, there will be no change in the meaning of
+the line unless the same parameter is set more than once. In this case, only the last setting of the
+parameter will take effect. For example, after the line '#3=15 #3=6' has been interpreted, the value
+of parameter 3 will be 6. If the order is reversed to '#3=6 #3=15' and the line is interpreted, the
+value of parameter 3 will be 15.</p>
+<p>If the third group (the comments) contains more than one comment and is reordered, only the last
+comment will be used.</p>
+<p>If each group is kept in order or reordered without changing the meaning of the line, then the three
+groups may be interleaved in any way without changing the meaning of the line. For example, the line
+'g40 g1 #3=15 (foo) #4=-7.0' has five items and means exactly the same thing in any of the 120
+possible orders (such as '#4=-7.0 g1 #3=15 g40 (foo)') for the five items.</p>
+</section>
+<section id="commands-and-machine-modes">
+<h2>Commands and Machine Modes<a class="headerlink" href="#commands-and-machine-modes" title="Link to this heading"></a></h2>
+<p>Many commands cause the controller to change from one mode to another, and the mode stays active
+until some other command changes it implicitly or explicitly. Such commands are called 'modal'. For
+example, if coolant is turned on, it stays on until it is explicitly turned off. The G codes for
+motion are also modal. If a G1 (straight move) command is given on one line, for example, it will be
+executed again on the next line if one or more axis words is available on the line, unless an
+explicit command is given on that next line using the axis words or canceling motion.</p>
+<p>'Non-modal' codes have effect only on the lines on which they occur. For example, G4 (dwell) is
+non-modal.</p>
+</section>
+<section id="polar-coordinates">
+<h2>Polar Coordinates<a class="headerlink" href="#polar-coordinates" title="Link to this heading"></a></h2>
+<p>Polar Coordinates can be used to specify the XY coordinate of a move.  The &#64;n is the distance and ^n
+is the angle. The advantage of this is for things like bolt hole circles which can be done very
+simply by moving to a point in the center of the circle, setting the offset and then moving out to
+the first hole then run the drill cycle. Polar Coordinates always are from the current XY zero
+position. To shift the Polar Coordinates from machine zero use an offset or select a coordinate
+system.</p>
+<p>In Absolute Mode the distance and angle is from the XY zero position and the angle starts with 0 on
+the X Positive axis and increases in a CCW direction about the Z axis. The code G1 &#64;1^90 is the same
+as G1 Y1.</p>
+<p>In Relative Mode the distance and angle is also from the XY zero position but it is cumulative. This
+can be confusing at first how this works in incremental mode.</p>
+<p>For example if you have the following program you might expect it to be a square pattern.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F100</span> <span class="n">G1</span> <span class="o">@</span><span class="mf">.5</span> <span class="o">^</span><span class="mi">90</span>
+<span class="n">G91</span> <span class="o">@</span><span class="mf">.5</span> <span class="o">^</span><span class="mi">90</span>
+<span class="o">@</span><span class="mf">.5</span> <span class="o">^</span><span class="mi">90</span>
+<span class="o">@</span><span class="mf">.5</span> <span class="o">^</span><span class="mi">90</span>
+<span class="o">@</span><span class="mf">.5</span> <span class="o">^</span><span class="mi">90</span>
+<span class="n">G90</span> <span class="n">G0</span> <span class="n">X0</span> <span class="n">Y0</span> <span class="n">M2</span>
+</pre></div>
+</div>
+<p>You can see from the following figure that the output is not what you might expect. Because we added
+0.5 to the distance each time the distance from the XY zero position increased with each line.</p>
+<p><img alt="Polar Spiral" src="../../_images/polar01.png" /></p>
+<p>Figure 1. Polar Spiral</p>
+<p>The following code will produce our square pattern.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F100</span> <span class="n">G1</span> <span class="o">@</span><span class="mf">.5</span> <span class="o">^</span><span class="mi">90</span>
+<span class="n">G91</span> <span class="o">^</span><span class="mi">90</span>
+<span class="o">^</span><span class="mi">90</span>
+<span class="o">^</span><span class="mi">90</span>
+<span class="o">^</span><span class="mi">90</span>
+<span class="n">G90</span> <span class="n">G0</span> <span class="n">X0</span> <span class="n">Y0</span> <span class="n">M2</span>
+</pre></div>
+</div>
+<p>As you can see by only adding to the angle by 90 degrees each time the end point distance is the
+same for each line.</p>
+<p><img alt="Polar Square" src="../../_images/polar02.png" /></p>
+<p>Figure 2. Polar Square</p>
+<p>It is an error if:</p>
+<ul class="simple">
+<li><p>An incremental move is started at the origin</p></li>
+<li><p>A mix of Polar and and X or Y words are used</p></li>
+</ul>
+</section>
+<section id="modal-groups">
+<h2>Modal Groups<a class="headerlink" href="#modal-groups" title="Link to this heading"></a></h2>
+<p>Modal commands are arranged in sets called 'modal groups', and only one member of a modal group may
+be in force at any given time. In general, a modal group contains commands for which it is logically
+impossible for two members to be in effect at the same time - like measure in inches vs. measure in
+millimeters. A machining center may be in many modes at the same time, with one mode from each modal
+group being in effect. The modal groups are shown in the following Table.</p>
+<p>Table 5. G-Code Modal Groups</p>
+<p>Modal Group Meaning
+Member Words
+Non-modal codes (Group 0)
+G4, G10 G28, G30, G52, G53, G92, G92.1, G92.2, G92.3,
+Motion (Group 1)
+G0, G1, G2, G3, G33, G38.n, G73, G76, G80, G81
+G82, G83, G84, G85, G86, G87, G88, G89
+Plane selection (Group 2)
+G17, G18, G19, G17.1, G18.1, G19.1
+Distance Mode (Group 3)
+G90, G91
+Arc IJK Distance Mode (Group 4)
+G90.1, G91.1
+Feed Rate Mode (Group 5)
+G93, G94, G95
+Units (Group 6)
+G20, G21
+Cutter Diameter Compensation (Group 7)
+G40, G41, G42, G41.1, G42.1
+Tool Length Offset (Group 8)
+G43, G43.1, G49
+Canned Cycles Return Mode (Group 10)
+G98, G99
+Coordinate System (Group 12)
+G54, G55, G56, G57, G58, G59, G59.1, G59.2, G59.3
+Control Mode (Group 13)
+G61, G61.1, G64
+Spindle Speed Mode (Group 14)
+G96, G97
+Lathe Diameter Mode (Group 15)
+G7, G8</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Modal Group Meaning</p></th>
+<th class="head"><p>Member Words</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Stopping (Group 4)</p></td>
+<td><p>M0, M1, M2, M30, M60</p></td>
+</tr>
+<tr class="row-odd"><td><p>Spindle (Group 7)</p></td>
+<td><p>M3, M4, M5</p></td>
+</tr>
+<tr class="row-even"><td><p>Coolant (Group 8)</p></td>
+<td><p>(M7 M8 can both be on), M9</p></td>
+</tr>
+<tr class="row-odd"><td><p>Override Switches (Group 9)</p></td>
+<td><p>M48, M49</p></td>
+</tr>
+<tr class="row-even"><td><p>User Defined (Group 10)</p></td>
+<td><p>M100-M199</p></td>
+</tr>
+</tbody>
+</table>
+<p>For several modal groups, when a machining center is ready to accept commands, one member of the
+group must be in effect. There are default settings for these modal groups. When the machining
+center is turned on or otherwise re-initialized, the default values are automatically in effect.</p>
+<p>Group 1, the first group on the table, is a group of G codes for motion.  One of these is always in
+effect. That one is called the current motion mode.</p>
+<p>It is an error to put a G-code from group 1 and a G-code from group 0 on the same line if both of
+them use axis words. If an axis word-using G-code from group 1 is implicitly in effect on a line (by
+having been activated on an earlier line), and a group 0 G-code that uses axis words appears on the
+line, the activity of the group 1 G-code is suspended for that line. The axis word-using G-codes
+from group 0 are G10, G28, G30, G52 and G92.</p>
+<p>It is an error to include any unrelated words on a line with 'O-' flow control.</p>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
+<p>Comments can be added to lines of G code to help clear up the intention of the programmer. Comments
+can be embedded in a line using parentheses () or for the remainder of a line using a
+semi-colon. The semi-colon is not treated as the start of a comment when enclosed in parentheses.</p>
+<p>Comments may appear between words, but not between words and their corresponding parameter. So,
+'S100(set speed)F200(feed)' is OK while 'S(speed)100F(feed)' is not.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">G0</span> <span class="p">(</span><span class="n">Rapid</span> <span class="n">to</span> <span class="n">start</span><span class="p">)</span> <span class="n">X1</span> <span class="n">Y1</span>
+<span class="n">G0</span> <span class="n">X1</span> <span class="n">Y1</span> <span class="p">(</span><span class="n">Rapid</span> <span class="n">to</span> <span class="n">start</span><span class="p">;</span> <span class="n">but</span> <span class="n">don</span><span class="s1">&#39;t forget the coolant)</span>
+<span class="n">M2</span> <span class="p">;</span> <span class="n">End</span> <span class="n">of</span> <span class="n">program</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>There are several 'active' comments which look like comments but cause some action, like
+'(debug,..)' or '(print,..)'. If there are several comments on a line, only the last comment will be
+interpreted according to these rules. Hence, a normal comment following an active comment will in
+effect disable the active comment. For example, '(foo) (debug,#1)' will print the value of parameter
+'#1', however '(debug,#1)(foo)' will not.</p>
+<p>A comment introduced by a semicolon is by definition the last comment on that line, and will always
+be interpreted for active comment syntax.</p>
+</section>
+<section id="messages">
+<h2>Messages<a class="headerlink" href="#messages" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>'(MSG,)' - displays message if 'MSG' appears after the left parenthesis and before any other
+printing characters. Variants of 'MSG' which include white space and lower case characters are
+allowed. The rest of the characters before the right parenthesis are considered to be a
+message. Messages should be displayed on the message display device of the user interface if
+provided.</p></li>
+</ul>
+<p>Message Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">MSG</span><span class="p">,</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="probe-logging">
+<h2>Probe Logging<a class="headerlink" href="#probe-logging" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>'(PROBEOPEN filename.txt)' - will open filename.txt and store the 9-number coordinate consisting</dt><dd><p>of XYZABCUVW of each successful straight probe in it.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>'(PROBECLOSE)' - will close the open probelog file. For more information on probing see the <a href="#id1"><span class="problematic" id="id2">`</span></a>G38</dt><dd><p>&lt;#gcode:g38&gt;`__ Section.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>'(LOGOPEN,filename.txt)' - opens the named log file. If the file already exists, it is truncated.</p></li>
+<li><dl class="simple">
+<dt>'(LOGAPPEND,filename)' - opens the named log file. If the file already exists, the data is</dt><dd><p>appended.</p>
+</dd>
+</dl>
+</li>
+<li><p>'(LOGCLOSE)' - closes an open log file.</p></li>
+<li><dl class="simple">
+<dt>'(LOG,)' - everything past the ',' is written to the log file if it is open. Supports expansion of</dt><dd><p>parameters as described below.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Examples of logging are in 'nc_files/examples/smartprobe.ngc' and in
+'nc_files/ngcgui_lib/rectange_probe.ngc' sample G code files.</p>
+</section>
+<section id="debug-messages">
+<h2>Debug Messages<a class="headerlink" href="#debug-messages" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>'(DEBUG,)' - displays a message like '(MSG,)' with the addition of special handling for comment</dt><dd><p>parameters as described below.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="print-messages">
+<h2>Print Messages<a class="headerlink" href="#print-messages" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>'(PRINT,)' - messages are output to 'stderr' with special handling for comment parameters as</dt><dd><p>described below.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="comment-parameters">
+<h2>Comment Parameters<a class="headerlink" href="#comment-parameters" title="Link to this heading"></a></h2>
+<p>In the DEBUG, PRINT and LOG comments, the values of parameters in the message are expanded.</p>
+<p>For example: to print a named global variable to stderr (the default console window).</p>
+<p>Parameters Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">print</span><span class="p">,</span><span class="n">endmill</span> <span class="n">dia</span> <span class="o">=</span> <span class="c1">#&lt;_endmill_dia&gt;)</span>
+<span class="p">(</span><span class="nb">print</span><span class="p">,</span><span class="n">value</span> <span class="n">of</span> <span class="n">variable</span> <span class="mi">123</span> <span class="ow">is</span><span class="p">:</span> <span class="c1">#123)</span>
+</pre></div>
+</div>
+<p>Inside the above types of comments, sequences like '#123' are replaced by the value of the
+parameter 123. Sequences like '#&lt;named parameter&gt;' are replaced by the value of the named
+parameter. Named parameters will have white space removed from them. So, '#&lt;named parameter&gt;' will
+be converted to '#&lt;namedparameter&gt;'.</p>
+</section>
+<section id="file-requirements">
+<h2>File Requirements<a class="headerlink" href="#file-requirements" title="Link to this heading"></a></h2>
+<p>A G code file must contain one or more lines of G code and be terminated with a <a class="reference external" href="#mcode:m2-m30">Program End</a>. Any G code past the program end is not evaluated.</p>
+<p>If a program end code is not used a pair of percent signs '%' with the first percent sign on the
+first line of the file followed by one or more lines of G code and a second percent sign. Any code
+past the second percent sign is not evaluated.</p>
+</section>
+<section id="file-size">
+<h2>File Size<a class="headerlink" href="#file-size" title="Link to this heading"></a></h2>
+<p>The interpreter and task are carefully written so that the only limit on part program size is disk
+capacity. The TkLinuxCNC and Axis interface both load the program text to display it to the user,
+though, so RAM becomes a limiting factor. In Axis, because the preview plot is drawn by default, the
+redraw time also becomes a practical limit on program size.  The preview can be turned off in Axis
+to speed up loading large part programs. In Axis sections of the preview can be turned off using
+<a class="reference external" href="#axis:preview-control">preview control</a> comments.</p>
+</section>
+<section id="g-code-order-of-execution">
+<h2>G Code Order of Execution<a class="headerlink" href="#g-code-order-of-execution" title="Link to this heading"></a></h2>
+<p>The order of execution of items on a line is defined not by the position
+of each item on the line, but by the following list:</p>
+<ul class="simple">
+<li><p>O-word commands (optionally followed by a comment but no other words allowed on the same line)</p></li>
+<li><p>Comment (including message)</p></li>
+<li><p>Set feed rate mode (G93, G94).</p></li>
+<li><p>Set feed rate (F).</p></li>
+<li><p>Set spindle speed (S).</p></li>
+<li><p>Select tool (T).</p></li>
+<li><p>HAL pin I/O (M62-M68).</p></li>
+<li><p>Change tool (M6) and Set Tool Number (M61).</p></li>
+<li><p>Spindle on or off (M3, M4, M5).</p></li>
+<li><p>Save State (M70, M73), Restore State (M72), Invalidate State (M71).</p></li>
+<li><p>Coolant on or off (M7, M8, M9).</p></li>
+<li><p>Enable or disable overrides (M48, M49,M50,M51,M52,M53).</p></li>
+<li><p>User-defined Commands (M100-M199).</p></li>
+<li><p>Dwell (G4).</p></li>
+<li><p>Set active plane (G17, G18, G19).</p></li>
+<li><p>Set length units (G20, G21).</p></li>
+<li><p>Cutter radius compensation on or off (G40, G41, G42)</p></li>
+<li><p>Cutter length compensation on or off (G43, G49)</p></li>
+<li><p>Coordinate system selection (G54, G55, G56, G57, G58, G59, G59.1, G59.2, G59.3).</p></li>
+<li><p>Set path control mode (G61, G61.1, G64)</p></li>
+<li><p>Set distance mode (G90, G91).</p></li>
+<li><p>Set retract mode (G98, G99).</p></li>
+<li><p>Go to reference location (G28, G30) or change coordinate system data (G10) or set axis offsets
+(G52, G92, G92.1, G92.2, G94).</p></li>
+<li><p>Perform motion (G0 to G3, G33, G38.n, G73, G76, G80 to G89), as modified (possibly) by G53.</p></li>
+<li><p>Stop (M0, M1, M2, M30, M60).</p></li>
+</ul>
+</section>
+<section id="g-code-best-practices">
+<h2>G Code Best Practices<a class="headerlink" href="#g-code-best-practices" title="Link to this heading"></a></h2>
+<p>Use an appropriate decimal precision</p>
+<p>Use at least 3 digits after the decimal when milling in millimeters, and at least 4 digits after the
+decimal when milling in inches.</p>
+<p>Use consistent white space</p>
+<p>G-code is most legible when at least one space appears before words.  While it is permitted to
+insert white space in the middle of numbers, there is no reason to do so.</p>
+<p>Use Center-format arcs</p>
+<p>Center-format arcs (which use 'I- J- K-' instead of 'R-' ) behave more consistently than R-format
+arcs, particularly for included angles near 180 or 360 degrees.</p>
+<p>Use a Preamble set modal groups</p>
+<p>When correct execution of your program depends on modal settings, be sure to set them at the
+beginning of the part program. Modes can carry over from previous programs and from the MDI
+commands.</p>
+<p>Example Preamble for a Mill</p>
+<div class="highlight-highlight notranslate"><div class="highlight"><pre><span></span>G17 G20 G40 G49 G54 G80 G90 G94
+</pre></div>
+</div>
+<p>G17 use XY plane, G20 inch mode, G40 cancel diameter compensation, G49 cancel length offset, G54 use
+coordinate system 1, G80 cancel canned cycles, G90 absolute distance mode, G94 feed/minute mode.</p>
+<p>Perhaps the most critical modal setting is the distance units—​If you do not include G20 or G21, then
+different machines will mill the program at different scales. Other settings, such as the return
+mode in canned cycles may also be important.</p>
+<p>Don’t put too many things on one line</p>
+<p>Ignore everything in Section <a class="reference external" href="#gcode:order-of-execution">Order of Execution</a>, and instead write
+no line of code that is the slightest bit ambiguous.</p>
+<p>Don’t set &amp; use a parameter on the same line</p>
+<p>Don’t use and set a parameter on the same line, even though the semantics are well defined. Updating
+a variable to a new value, such as '#1=[#1+#2]' is OK.</p>
+<p>Don’t use line numbers</p>
+<p>Line numbers offer no benefits. When line numbers are reported in error messages, the numbers refer
+to the line number in the file, not the N-word value.</p>
+</section>
+<section id="linear-and-rotary-axis">
+<h2>Linear and Rotary Axis<a class="headerlink" href="#linear-and-rotary-axis" title="Link to this heading"></a></h2>
+<p>Because the meaning of an F-word in feed-per-minute mode varies depending on which axes are
+commanded to move, and because the amount of material removed does not depend only on the feed rate,
+it may be easier to use G93 inverse time feed mode to achieve the desired material removal rate.</p>
+</section>
+<section id="common-error-messages">
+<h2>Common Error Messages<a class="headerlink" href="#common-error-messages" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>'G code out of range' - A G code greater than G99 was used, the scope of G codes in LinuxCNC is</dt><dd><p>0 - 99. Not every number between 0 and 99 is a valid G code.</p>
+</dd>
+</dl>
+</li>
+<li><p>'Unknown g code used' - A G code was used that is not part of the LinuxCNC G code language.</p></li>
+<li><p>'i,j,k word with no Gx to use it' - i, j and k words must be used on the same line as the G code.</p></li>
+<li><dl class="simple">
+<dt>'Cannot use axis values without a g code that uses them' - Axis values can not be used on a line</dt><dd><p>without either a modal G code in effect or a G code on the same line.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>'File ended with no percent sign or program end' - Every G code file must end in a M2 or M30 or be</dt><dd><p>wrapped with the percent sign %.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<hr class="docutils" />
+<p><a class="reference external" href="#_footnoteref_1">1</a>. The range of persistent parameters may change as development
+progresses. This range is currently 5161- 5390. It is defined in the '_required_parameters array' in
+file the src/emc/rs274ngc/interp_array.cc .</p>
+<p><a class="reference external" href="#_footnoteref_2">2</a>. The RS274/NGC interpreter maintains an array of numbered parameters. Its
+size is defined by the symbol 'RS274NGC_MAX_PARAMETERS' in the file
+src/emc/rs274ngc/interp_internal.hh). This number of numerical parameters may also increase as
+development adds support for new parameters.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, caigk。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

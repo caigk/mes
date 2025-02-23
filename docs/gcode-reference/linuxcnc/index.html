@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinuxCNC Reference &mdash; cnc reference 0.1.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/PythonicGcodeMachine.css?v=f6519d23" />
+
+  
+    <link rel="canonical" href="https://cnc.caigk.com/gcode-reference/linuxcnc/index.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=74157ad4"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/getthecode.js"></script>
+      <script src="../../_static/matomo.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            cnc reference
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../rs-274/index.html">1. RS-274 G-code Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#history">1.1. History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#overview">1.2. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#language-view-of-a-machining-center">1.3. Language View of a Machining Center</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#parameters">1.3.1. Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#coordinate-systems">1.3.2. Coordinate Systems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#format-of-a-line">1.4. Format of a Line</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#line-number">1.4.1. Line Number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#word">1.4.2. Word</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#number">1.4.3. Number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#parameter-value">1.4.4. Parameter Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#expressions-and-binary-operations">1.4.5. Expressions and Binary Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#unary-operation-value">1.4.6. Unary Operation Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#parameter-setting">1.4.7. Parameter Setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#comments-and-messages">1.4.8. Comments and Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#item-repeats">1.4.9. Item Repeats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#item-order">1.4.10. Item order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rs-274/index.html#commands-and-machine-modes">1.4.11. Commands and Machine Modes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#modal-groups">1.5. Modal Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#g-and-input-codes">1.6. G and Input Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rs-274/index.html#order-of-execution">1.7. Order of Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../test.html">2. 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../test.html#id2">2.1. 2</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cnc reference</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">LinuxCNC Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/gcode-reference/linuxcnc/index.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="linuxcnc-reference">
+<span id="linuxcnc-reference-page"></span><h1>LinuxCNC Reference<a class="headerlink" href="#linuxcnc-reference" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Documentation extracted from <a href="#id3"><span class="problematic" id="id4">|LinuxCNC|_</span></a> and semi-automatically converted from AsciiDoc
+to rST format.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">G Code Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#format-of-a-line">Format of a line</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#block-delete">Block Delete</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#line-number">Line Number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#word">Word</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#number">Number</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#parameters">Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#numbered-parameters">Numbered Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#subroutine-parameters">Subroutine Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#named-parameters">Named Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#predefined-named-parameters">Predefined Named Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#system-parameters">System Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#expressions">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#binary-operators">Binary Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#equality-and-floating-point-values">Equality and floating-point values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#repeated-items">Repeated Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#item-order">Item order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#commands-and-machine-modes">Commands and Machine Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#polar-coordinates">Polar Coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#modal-groups">Modal Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#comments">Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#messages">Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#probe-logging">Probe Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#debug-messages">Debug Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#print-messages">Print Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#comment-parameters">Comment Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#file-requirements">File Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#file-size">File Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#g-code-order-of-execution">G Code Order of Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#g-code-best-practices">G Code Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#linear-and-rotary-axis">Linear and Rotary Axis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#common-error-messages">Common Error Messages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coordinates.html">Coordinate Systems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coordinates.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordinates.html#machine-coordinate-system">Machine Coordinate System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordinates.html#coordinate-systems-1">Coordinate Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="coordinates.html#default-coordinate-system">Default Coordinate System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coordinates.html#setting-coordinate-system-offsets">Setting Coordinate System Offsets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coordinates.html#local-and-global-offsets">Local and Global Offsets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="coordinates.html#the-g52-command">The G52 command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coordinates.html#the-g92-commands">The G92 commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coordinates.html#setting-g92-values">Setting G92 Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coordinates.html#g92-persistence-cautions">G92 Persistence Cautions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coordinates.html#g92-and-g52-interaction-cautions">G92 and G52 Interaction Cautions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coordinates.html#sample-programs-using-offsets">Sample Programs Using Offsets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="coordinates.html#sample-program-using-workpiece-coordinate-offsets">Sample Program Using Workpiece Coordinate Offsets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coordinates.html#sample-program-using-g52-offsets">Sample Program Using G52 Offsets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="machining-center.html">CNC Machine Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="machining-center.html#mechanical-components">Mechanical Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#axes">Axes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#spindle">Spindle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#coolant">Coolant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#feed-and-speed-override">Feed and Speed Override</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#block-delete-switch">Block Delete Switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#optional-program-stop-switch">Optional Program Stop Switch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="machining-center.html#control-and-data-components">Control and Data Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#linear-axes">Linear Axes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#rotational-axes">Rotational Axes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#controlled-point">Controlled Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#coordinated-linear-motion">Coordinated Linear Motion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#feed-rate">Feed Rate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#coolant-1">Coolant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#dwell">Dwell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#units">Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#current-position">Current Position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#selected-plane">Selected Plane</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#tool-carousel">Tool Carousel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#tool-change">Tool Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#pallet-shuttle">Pallet Shuttle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#path-control-mode">Path Control Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="machining-center.html#interpreter-interaction-with-switches">Interpreter Interaction with Switches</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#feed-and-speed-override-switches">Feed and Speed Override Switches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#block-delete-switch-1">Block Delete Switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machining-center.html#optional-program-stop-switch-1">Optional Program Stop Switch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="machining-center.html#tool-table">Tool Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machining-center.html#parameters">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tool-compensation.html">Tool Compensation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tool-compensation.html#tool-length-offsets">Tool Length Offsets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tool-compensation.html#touch-off">Touch Off</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tool-compensation.html#using-g10-l1-l10-l11">Using G10 L1/L10/L11</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tool-compensation.html#tool-table">Tool Table</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tool-compensation.html#tool-table-format">Tool Table Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tool-compensation.html#tool-changers">Tool Changers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tool-compensation.html#cutter-compensation">Cutter Compensation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tool-compensation.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tool-compensation.html#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="g-code.html">G Codes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#conventions">Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g-code-quick-reference-table">G Code Quick Reference Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g0-rapid-move">G0 Rapid Move</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="g-code.html#rapid-velocity-rate">Rapid Velocity Rate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g1-linear-move">G1 Linear Move</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g2-g3-arc-move">G2, G3 Arc Move</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="g-code.html#center-format-arcs">Center Format Arcs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="g-code.html#center-format-examples">Center Format Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="g-code.html#radius-format-arcs">Radius Format Arcs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g4-dwell">G4 Dwell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g5-cubic-spline">G5 Cubic Spline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g5-1-quadratic-spline">G5.1 Quadratic Spline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g5-2-g5-3-nurbs-block">G5.2 G5.3 NURBS Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g7-lathe-diameter-mode">G7 Lathe Diameter Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g8-lathe-radius-mode">G8 Lathe Radius Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g10-l1-set-tool-table">G10 L1 Set Tool Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g10-l2-set-coordinate-system">G10 L2 Set Coordinate System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g10-l10-set-tool-table">G10 L10 Set Tool Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g10-l11-set-tool-table">G10 L11 Set Tool Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g10-l20-set-coordinate-system">G10 L20 Set Coordinate System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g17-g19-1-plane-select">G17 - G19.1 Plane Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g20-g21-units">G20, G21 Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g28-g28-1-go-set-predefined-position">G28, G28.1 Go/Set Predefined Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g30-g30-1-go-set-predefined-position">G30, G30.1 Go/Set Predefined Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g33-spindle-synchronized-motion">G33 Spindle Synchronized Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g33-1-rigid-tapping">G33.1 Rigid Tapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g38-n-straight-probe">G38.n Straight Probe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g40-compensation-off">G40 Compensation Off</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g41-g42-cutter-compensation">G41, G42 Cutter Compensation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g41-1-g42-1-dynamic-cutter-compensation">G41.1, G42.1 Dynamic Cutter Compensation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g43-tool-length-offset">G43 Tool Length Offset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g43-1-dynamic-tool-length-offset">G43.1: Dynamic Tool Length Offset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g43-2-apply-additional-tool-length-offset">G43.2: Apply additional Tool Length Offset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g49-cancel-tool-length-compensation">G49: Cancel Tool Length Compensation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g53-move-in-machine-coordinates">G53 Move in Machine Coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g54-g59-3-select-coordinate-system">G54-G59.3 Select Coordinate System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g61-g61-1-exact-path-mode">G61, G61.1 Exact Path Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g64-path-blending">G64 Path Blending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g73-drilling-cycle-with-chip-breaking">G73 Drilling Cycle with Chip Breaking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g74-left-hand-tapping-cycle-dwell">G74 Left-hand Tapping Cycle, Dwell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g76-threading-cycle">G76 Threading Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#canned-cycles">Canned Cycles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="g-code.html#common-words">Common Words</a></li>
+<li class="toctree-l3"><a class="reference internal" href="g-code.html#sticky-words">Sticky Words</a></li>
+<li class="toctree-l3"><a class="reference internal" href="g-code.html#repeat-cycle">Repeat Cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="g-code.html#retract-mode">Retract Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="g-code.html#canned-cycle-errors">Canned Cycle Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="g-code.html#preliminary-and-in-between-motion">Preliminary and In-Between Motion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="g-code.html#why-use-a-canned-cycle">Why use a canned cycle?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g80-cancel-canned-cycle">G80 Cancel Canned Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g81-drilling-cycle">G81 Drilling Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g82-drilling-cycle-dwell">G82 Drilling Cycle, Dwell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g83-peck-drilling-cycle">G83 Peck Drilling Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g84-right-hand-tapping-cycle-dwell">G84 Right-hand Tapping Cycle, Dwell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g85-boring-cycle-feed-out">G85 Boring Cycle, Feed Out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g86-boring-cycle-spindle-stop-rapid-move-out">G86 Boring Cycle, Spindle Stop, Rapid Move Out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g87-back-boring-cycle">G87 Back Boring Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g88-boring-cycle-spindle-stop-manual-out">G88 Boring Cycle, Spindle Stop, Manual Out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g89-boring-cycle-dwell-feed-out">G89 Boring Cycle, Dwell, Feed Out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g90-g91-distance-mode">G90, G91 Distance Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g90-1-g91-1-arc-distance-mode">G90.1, G91.1 Arc Distance Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g92-coordinate-system-offset">G92 Coordinate System Offset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g92-1-g92-2-reset-g92-offsets">G92.1, G92.2 Reset G92 Offsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g92-3-restore-g92-offsets">G92.3 Restore G92 Offsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g93-g94-g95-feed-rate-mode">G93, G94, G95: Feed Rate Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g96-g97-spindle-control-mode">G96, G97 Spindle Control Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g-code.html#g98-g99-canned-cycle-return-level">G98, G99 Canned Cycle Return Level</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="m-code.html">M Codes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m-code-quick-reference-table">M Code Quick Reference Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m0-m1-program-pause">M0, M1 Program Pause</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m2-m30-program-end">M2, M30 Program End</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m60-pallet-change-pause">M60 Pallet Change Pause</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m3-m4-m5-spindle-control">M3, M4, M5 Spindle Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m6-tool-change">M6 Tool Change</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="m-code.html#manual-tool-change">Manual Tool Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="m-code.html#tool-changer">Tool Changer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m7-m8-m9-coolant-control">M7, M8, M9 Coolant Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m19-orient-spindle">M19 Orient Spindle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m48-m49-speed-and-feed-override-control">M48, M49 Speed and Feed Override Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m50-feed-override-control">M50 Feed Override Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m51-spindle-speed-override-control">M51 Spindle Speed Override Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m52-adaptive-feed-control">M52 Adaptive Feed Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m53-feed-stop-control">M53 Feed Stop Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m61-set-current-tool">M61 Set Current Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m62-m65-digital-output-control">M62 - M65 Digital Output Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m66-wait-on-input">M66 Wait on Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m67-analog-output-synchronized">M67 Analog Output,Synchronized</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m68-analog-output-immediate">M68 Analog Output, Immediate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m70-save-modal-state">M70 Save Modal State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m71-invalidate-stored-modal-state">M71 Invalidate Stored Modal State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m72-restore-modal-state">M72 Restore Modal State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m73-save-and-autorestore-modal-state">M73 Save and Autorestore Modal State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m98-and-m99">M98 and M99</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="m-code.html#selectively-restoring-modal-state">Selectively Restoring Modal State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="m-code.html#m100-m199-user-defined-commands">M100 - M199 User Defined Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="o-code.html">O Codes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="o-code.html#numbering">Numbering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="o-code.html#comments">Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="o-code.html#subroutines">Subroutines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="o-code.html#fanuc-style-numbered-programs">Fanuc-Style Numbered Programs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="o-code.html#looping">Looping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="o-code.html#conditional">Conditional</a></li>
+<li class="toctree-l2"><a class="reference internal" href="o-code.html#repeat">Repeat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="o-code.html#indirection">Indirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="o-code.html#calling-files">Calling Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="o-code.html#subroutine-return-values">Subroutine return values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="o-code.html#errors">Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="other-code.html">Other Codes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="other-code.html#f-set-feed-rate">F: Set Feed Rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other-code.html#s-set-spindle-speed">S: Set Spindle Speed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other-code.html#t-select-tool">T: Select Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rs274ngc.html">RS274/NGC Differences</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs274ngc.html#changes-from-rs274-ngc">Changes from RS274/NGC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs274ngc.html#additions-to-rs274-ngc">Additions to RS274/NGC</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, caigk。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
