@@ -1,16 +1,9 @@
-.. |cnc| image:: _static/images/cnc.png
-  :scale: 50%
+
 
 #############################
  Optplaner
 #############################
 
-|cnc|
-
-G-code (also RS-274), which has many variants, is the common name for the most widely used numerical control (NC) programming language. It is used mainly in computer-aided manufacturing for controlling automated machine tools. G-code is sometimes called G programming language.
-
-G代码比较正式的名字是 RS-274或者RS-274D。最早的数控机床是在20世纪50年代由美国人John Parsons发明的，第一代的数控编程语言也在此时诞生。20世纪60年代，EIA（电子工业协会）制定了数控编程语言的最初标准，1980年，形成了这个标准的最终版本（即RS-274-D）。除了这一个标准外，还有其他标准，详见文后的wiki链接。
-关于为什么命名G-code或者G&M Code，一个说法是该语言的命令许多都是G或者M字母开头的。
 
 **参考资料**
 
