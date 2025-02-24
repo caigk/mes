@@ -58,3 +58,5 @@ G代码比较正式的名字是 RS-274或者RS-274D。最早的数控机床是�
   camunda.rst
   optplaner.rst
   minio.rst
+  dameng.rst
+  sparkline.rst
