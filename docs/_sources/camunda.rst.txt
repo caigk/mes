@@ -53,6 +53,7 @@
 
 * `org.camunda.bpm.engine javadoc <https://docs.camunda.org/javadoc/camunda-bpm-platform/7.22/org/camunda/bpm/engine/package-summary.html>`_
 * `org.camunda.bpm.spring.boot.starter javadoc <https://docs.camunda.org/javadoc/camunda-bpm-platform/7.22/org/camunda/bpm/spring/boot/starter/package-summary.html>`_
+* `Camunda Platform REST API <https://docs.camunda.org/rest/camunda-bpm-platform/7.22/>`
 
 ================================
  若依/RuoYi-Vue
