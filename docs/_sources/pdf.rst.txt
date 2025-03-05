@@ -1,0 +1,10 @@
+#############################
+ PDF FORM
+#############################
+
+=============================
+Blend PDF with HTML5
+=============================
+
+* `Blend PDF with HTML5 on codeproject <https://www.codeproject.com/articles/466362/blend-pdf-with-html5>`_
+* `demo <https://www.hanray.com/sites/BlendPDFWithHTML5>`_

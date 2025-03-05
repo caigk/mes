@@ -34,13 +34,15 @@
   :target: https://github.com/pklauke/pycamunda
 .. |camunda external task client js| image:: https://img.shields.io/badge/github-external_client_js-blue?logo=github
   :target: https://github.com/camunda/camunda-external-task-client-js
-
+.. |camunda blibli| image:: https://img.shields.io/badge/blibli-camonda-blue?logo=blibli
+  :target: https://www.bilibili.com/video/BV1qe4y1m7D7
 
 
 * |camunda.com| |start.camunda.com|
 * |camunda docs 7.22| 
 * |camunda github| |camunda examples github|··
 * |camunda external task client js| |pycamunda|
+* |camunda blibli|
 
 .. tip::
   注意：-ee 表示 "enterprice edition" 企业版，可能不能使用!
