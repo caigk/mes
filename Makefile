@@ -24,5 +24,10 @@ help:
 	rm -rf docs/*
 	cp -R $(BUILDDIR)/html/* docs
 
-run:
+serve:
 	conda run -n ${CONDA_ENV_NAME} --cwd=$(PWD)  --live-stream sphinx-autobuild "$(SOURCEDIR)" "$(BUILDDIR)/html"
+
+commit: html
+	git add --all
+	git commit -m "自动"
+	git push
