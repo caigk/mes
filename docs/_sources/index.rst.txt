@@ -31,4 +31,6 @@ MES系统作为一个整合性的解决方案，涵盖了从订单接收、生�
   dameng.rst
   ui.rst
   data-visualization.rst
+  git.rst
+  blender.rst
   
