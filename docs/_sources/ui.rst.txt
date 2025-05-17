@@ -40,3 +40,6 @@ Sparkline
 ******************************
  MERMAID
 ******************************
+
+* `mermaid <https://mermaid.js.org/>`_
+* `kanban <https://mermaid.js.org/syntax/kanban.html>`_
