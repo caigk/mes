@@ -33,4 +33,5 @@ MES系统作为一个整合性的解决方案，涵盖了从订单接收、生�
   data-visualization.rst
   git.rst
   blender.rst
-  
+  weixin.rst
+  nodeJs.rst

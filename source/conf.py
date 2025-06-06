@@ -125,6 +125,9 @@ html_baseurl = setup_dict["url"]
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
+# html_logo=
+html_favicon = "https://assets.caigk.com/caigk-wx-avatar.jpeg"
+
 ####################################################################################################
 #
 # sphinx-sitemap

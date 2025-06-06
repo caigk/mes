@@ -43,3 +43,4 @@ Sparkline
 
 * `mermaid <https://mermaid.js.org/>`_
 * `kanban <https://mermaid.js.org/syntax/kanban.html>`_
+* `https://mermaid.js.org/syntax/sankey.html`_

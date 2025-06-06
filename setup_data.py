@@ -51,13 +51,13 @@ else:
 ####################################################################################################
 
 setup_dict = dict(
-    name='mes',
+    name="caigk's mes",
     version='0.1.0',
-    author='caigk',
+    author='蔡刚坤',
     author_email='caigk@sina.com',
     description='...',
     license='GPLv3',
-    keywords= 'foo bar',
+    keywords= 'mes',
     url='https://mes.caigk.com',
     long_description=long_description,
 )
